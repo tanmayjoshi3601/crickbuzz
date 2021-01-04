@@ -1,0 +1,109 @@
+import java.util.Scanner;
+
+public class Team  {
+	 String name;
+	int batsman[]=new int[5];
+	int teamscore;
+	double runrate;
+	int now;
+	Scanner sc=new Scanner(System.in);
+	Team()
+	{
+		teamscore=0;
+		runrate=0;
+		now=0;
+	}
+	void setTeamName()
+	{
+		System.out.print("Enter team name:");
+		name=sc.nextLine();
+	}
+	
+	
+
+}
+
+
+
+
+
+
+public class UmpireFunction extends Team {
+ 
+	UmpireFunction()
+	{
+		super();
+		
+	}
+	void setRuns(int n)
+	{
+		teamscore=teamscore+n;
+	}
+
+}
+
+
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		// TODO Auto-generated method stub
+UmpireFunction t1=new UmpireFunction();
+UmpireFunction t2=new UmpireFunction();
+t1.setTeamName();
+t2.setTeamName();
+System.out.println("******************"+t1.name+"  VS  "+t2.name+"*******************");
+System.out.println("______________________________________________________________");
+System.out.println("TEAM 1 BATTING INNINGS 1");
+for(int i=0;i<=6;i++)
+{
+	
+	int choice;
+	int k=0;
+	System.out.print("1-ENTER NO OF RUNS\n2-WIDE BALL\n3-WICKET\n4-DISPLAY RUN RATE\n5-NO OF RUNS\n6-NO OF WICKETS\n\n\n");
+	choice=sc.nextInt();
+	int p=t1.now;
+	if(p==5)
+	{
+		System.out.println("The TEAM is ALL OUT!!!Innings over the second team has a target of "+(t1.teamscore+1)+"runs");
+		break;
+	}
+	switch(choice)
+	{
+	case 1:
+		int runs;
+		System.out.println("How many runs Did the batsmen hit!!");
+		runs=sc.nextInt();
+		t1.setRuns(runs);
+		break;
+	case 2:
+		System.out.println("Arghhhh!!!Wide Ball!!");
+		t1.WideBall();
+		break;
+	case 3:
+		System.out.println("Howzzzzz That!!Its A Wicket");
+		t1.setWicket();
+		break;
+	case 4:
+		t1.displayRunRate(i);
+		break;
+	case 5:
+		t1.displayScore();
+	break;
+	case 6:
+		t1.getNoOfWickets();
+		break;
+		default:
+			System.out.println("INVALID CHOICE !!SORRY");
+			
+	
+	}
+	System.out.println("First Innings over .The second team has a target of "+(t1.teamscore+1)+" runs");
+	
+}
+sc.close();
+	}
+
+}
